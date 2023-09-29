@@ -1,17 +1,5 @@
 <script>
-    import {AppBar, AppShell, getModalStore} from "@skeletonlabs/skeleton";
-    import Login from "$lib/Login.svelte";
-    
-    const modalStore = getModalStore();
-    
-    function openLogin() {
-        modalStore.trigger({
-            type: "component",
-            component: {
-                ref: Login
-            }
-        });
-    }
+    import {AppBar, AppShell} from "@skeletonlabs/skeleton";
 </script>
 
 <AppShell>
@@ -21,9 +9,9 @@
                 <strong class="text-xl uppercase text-surface-500">Echo</strong>
             </svelte:fragment>
             <svelte:fragment slot="trail">
-                <button class="btn variant-ghost-primary" on:click={openLogin}>
+                <a class="btn variant-ghost-primary" href="/login">
                     Login
-                </button>
+                </a>
             </svelte:fragment>
         </AppBar>
     </svelte:fragment>
