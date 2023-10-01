@@ -33,6 +33,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@floating-ui/dom": "1.5.3"
+    "@floating-ui/dom": "1.5.3",
+    "svelte-splitpanes": "^0.8.0"
   }
 }
