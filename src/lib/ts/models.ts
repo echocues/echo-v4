@@ -6,7 +6,6 @@ export class EchoSoundCue {
     speed: number;
 
     constructor(json: any) {
-        // temporary to work with legacy api
         this.identifier = json.identifier;
         this.source = json.file_name;
         this.displayName = this.source;
@@ -22,7 +21,7 @@ export class EchoProject {
     scenes: EchoScene[];
     sound_cues: EchoSoundCue[];
 
-    public constructor(json: any) {
+    constructor(json: any) {
         this.title = json.title;
         this.description = json.description;
         this.project_id = json.id;

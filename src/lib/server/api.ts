@@ -44,10 +44,11 @@ export namespace EchoBackend {
         }
     }
     
-    export async function getProjects(): Promise<EchoProject[]> {
+    export async function getProjects(token: string): Promise<EchoProject[]> {
         const response = await fetch(`${url}/projects/`, {
             method: "GET",
             headers: {
+                'Authorization': "Bearer " + token,
                 'Accept': "application/json",
                 'Content-Type': "application/json"
             }

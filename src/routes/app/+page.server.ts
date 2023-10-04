@@ -7,11 +7,12 @@ export async function load({cookies}) {
     const sessionId = cookies.get(EchoConstants.sessionId);
 
     if (!sessionId) {
-        throw redirect(308, "/auth/login");
+        throw redirect(303, "/auth/login");
     }
     
-    // TODO: shows not authorized..?
+    const projects = await EchoBackend.getProjects(sessionId);
+    
     return {
-        projects: await EchoBackend.getProjects()
+        projects: JSON.stringify(projects)
     }
 }

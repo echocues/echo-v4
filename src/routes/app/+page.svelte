@@ -20,8 +20,11 @@
     </svelte:fragment>
     
     <div class="w-full h-full">
-        <!--{#each data.projects as project}-->
-        <!--    <span>{project.title}</span>-->
-        <!--{/each}-->
+        {#each JSON.parse(data.projects) as project}
+            <a class="card variant-filled-error card-hover" href="/app/project/{project.project_id}">
+                <header class="card-header">{project.title}</header>
+                <section class="p-4">{project.description}</section>
+            </a>
+        {/each}
     </div>
 </AppShell>
