@@ -3,31 +3,31 @@ import {EchoBackend} from "$lib/server/api";
 import {fail, redirect} from "@sveltejs/kit";
 import {EchoConstants} from "$lib/ts/utils";
 
-const act = async (event: RequestEvent) => {
-    const data = await event.request.formData()
-    const username = data.get("username") as string;
-    const password = data.get("password") as string;
-
-    if (!username) {
-        return fail(400, {password, missingUsername: true});
-    }
-
-    if (!password) {
-        return fail(400, {password, missingPassword: true});
-    }
-
-    try {
-        const token = await EchoBackend.loginAuth(username, password);
-        event.cookies.set(EchoConstants.sessionId, token, {
-            expires: new Date(new Date().setDate(new Date().getDate() + 7))
-        });
-    } catch (error) {
-        return {fail: true};
-    }
-
-    throw redirect(308, "/app");
-};
-
 export const actions = {
-    login: act, 
+    default: async (event: RequestEvent) => {
+        const data = await event.request.formData()
+        const username = data.get("username") as string;
+        const password = data.get("password") as string;
+
+        if (!username) {
+            return fail(400, {password, missingUsername: true});
+        }
+
+        if (!password) {
+            return fail(400, {password, missingPassword: true});
+        }
+
+        try {
+            const token = await EchoBackend.loginAuth(username, password);
+            event.cookies.set(EchoConstants.sessionId, token, {
+                httpOnly: true,
+                path: '/',
+                maxAge: 60 * 60 * 24 * 7
+            });
+        } catch (error) {
+            return {fail: true};
+        }
+
+        throw redirect(308, "/app");
+    }, 
 }

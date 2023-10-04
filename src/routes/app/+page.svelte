@@ -20,8 +20,8 @@
     </svelte:fragment>
     
     <div class="w-full h-full">
-        {#each data.projects as project}
-            <span>{project.title}</span>
-        {/each}
+        <!--{#each data.projects as project}-->
+        <!--    <span>{project.title}</span>-->
+        <!--{/each}-->
     </div>
 </AppShell>
