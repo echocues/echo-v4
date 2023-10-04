@@ -22,6 +22,6 @@ export const actions = {
             return {fail: true};
         }
 
-        throw redirect(308, "/auth/login");
+        throw redirect(303, "/auth/login");
     },
 }

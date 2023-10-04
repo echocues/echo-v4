@@ -10,6 +10,7 @@ export async function load({cookies}) {
         throw redirect(308, "/auth/login");
     }
     
+    // TODO: shows not authorized..?
     return {
         projects: await EchoBackend.getProjects()
     }

@@ -22,12 +22,13 @@ export const actions = {
             event.cookies.set(EchoConstants.sessionId, token, {
                 httpOnly: true,
                 path: '/',
+                //      s    m    h    d
                 maxAge: 60 * 60 * 24 * 7
             });
         } catch (error) {
             return {fail: true};
         }
 
-        throw redirect(308, "/app");
+        throw redirect(303, "/app");
     }, 
 }
