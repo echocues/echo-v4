@@ -62,4 +62,42 @@ export namespace EchoBackend {
         
         return json.map((element: any) => new EchoProject(element));
     }
+    
+    export async function getProject(token: string, id: number) {
+        const response = await fetch(`/projects/${id}`, {
+            method: "GET",
+            headers: {
+                'Authorization': "Bearer " + token,
+                'Accept': "application/json",
+                'Content-Type': "application/json"
+            }
+        });
+        
+        return new EchoProject({
+            title: "Test",
+            description: "",
+            id: 0
+        });
+    }
+    
+    export async function createProject(token: string, title: string, description: string) {
+        const response = await fetch(`${url}/projects/`, {
+            method: "POST",
+            headers: {
+                'Authorization': "Bearer " + token,
+                'Accept': "application/json",
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify({
+                title: title,
+                description: description,
+            })
+        })
+
+        const json = await response.json();
+
+        if (!response.ok) {
+            throw new Error(`Failed to create projects ` + JSON.stringify(json.detail));
+        }
+    }
 }

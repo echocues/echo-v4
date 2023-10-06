@@ -9,9 +9,9 @@ export async function load({cookies}) {
     if (!sessionId) {
         throw redirect(303, "/auth/login");
     }
-    
+
     const projects = await EchoBackend.getProjects(sessionId);
-    
+
     return {
         projects: JSON.stringify(projects)
     }
