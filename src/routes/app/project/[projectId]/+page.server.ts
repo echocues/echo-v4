@@ -1,6 +1,6 @@
-import {EchoBackend} from "$lib/server/api";
-import {EchoConstants} from "$lib/ts/utils";
+import {redirect} from "@sveltejs/kit";
 
-export async function load({ params, cookies }) {
-    // const project = await EchoBackend.getProject(cookies.get(EchoConstants.sessionId), params.projectId);
+// @ts-ignore
+export async function load({url}) {
+    throw redirect(303, url.pathname + "/sounds");
 }

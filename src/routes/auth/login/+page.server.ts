@@ -23,7 +23,8 @@ export const actions = {
                 httpOnly: true,
                 path: '/',
                 //      s    m    h    d
-                maxAge: 60 * 60 * 24 * 7
+                // maxAge: 60 * 60 * 24 * 7
+                maxAge: 60 * 5
             });
         } catch (error) {
             return {fail: true};

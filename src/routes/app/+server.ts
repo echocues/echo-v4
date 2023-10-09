@@ -4,6 +4,7 @@ import {EchoConstants} from "$lib/ts/utils";
 
 // @ts-ignore
 export async function POST({ request, cookies }): Promise<Response> {
+    
     const json = await request.json();
     const token = cookies.get(EchoConstants.sessionId);
     

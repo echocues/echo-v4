@@ -6,7 +6,8 @@
 
 <form method="post" class="flex flex-col col-span-1 justify-center items-center">
     <div class="flex flex-col justify-center w-2/5 h-full gap-4">
-        <h2 class="h2 w-auto">Login</h2>
+        <h2 class="h2 w-auto font-bold">Login</h2>
+        
         {#if form?.fail}
             <span class="text-error-500 mt-[-16px]">Username or password incorrect</span>
         {/if}
